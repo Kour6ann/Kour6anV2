@@ -1,4 +1,4 @@
--- Kour6anV2.lua
+-- Kour6anV2.lua (Fixed Version)
 local Kour6anV2 = {}
 local Components = {}
 
@@ -252,6 +252,13 @@ Components.Textbox = function(parent, hasBackground)
         Parent = frame
     })
     
+    -- Fixed: Use UDim for padding, not UDim2
+    local padding = Creator.New("UIPadding", {
+        PaddingLeft = UDim.new(0, 8),
+        PaddingRight = UDim.new(0, 8),
+        Parent = frame
+    })
+    
     return {
         Frame = frame,
         Input = input
@@ -336,6 +343,13 @@ Components.Dialog.Create = function()
         
         local corner = Creator.New("UICorner", {
             CornerRadius = UDim.new(0, 4),
+            Parent = button
+        })
+        
+        -- Fixed: Use UDim for padding, not UDim2
+        local padding = Creator.New("UIPadding", {
+            PaddingLeft = UDim.new(0, 8),
+            PaddingRight = UDim.new(0, 8),
             Parent = button
         })
         
@@ -726,7 +740,7 @@ function Kour6anV2:Init(options)
     
     local contentLayout = Creator.New("UIListLayout", {
         SortOrder = Enum.SortOrder.LayoutOrder,
-        Padding = UDim2.new(0, 0, 0, 10),
+        Padding = UDim.new(0, 10), -- Fixed: Use UDim, not UDim2
         Parent = contentContainer
     })
     
@@ -822,7 +836,7 @@ function Kour6anV2:CreateTab(name)
     
     local contentLayout = Creator.New("UIListLayout", {
         SortOrder = Enum.SortOrder.LayoutOrder,
-        Padding = UDim2.new(0, 0, 0, 10),
+        Padding = UDim.new(0, 10), -- Fixed: Use UDim, not UDim2
         Parent = content
     })
     
@@ -874,7 +888,7 @@ function Kour6anV2:CreateTab(name)
         
         local containerLayout = Creator.New("UIListLayout", {
             SortOrder = Enum.SortOrder.LayoutOrder,
-            Padding = UDim2.new(0, 0, 0, 10),
+            Padding = UDim.new(0, 10), -- Fixed: Use UDim, not UDim2
             Parent = container
         })
         
